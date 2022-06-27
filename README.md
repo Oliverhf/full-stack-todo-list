@@ -2,8 +2,8 @@
 
 ## Main goal of this project
 
-Build a full stack application using React, GraphQL and Phoenix.
-
+Build a full stack application using React, GraphQL, Phoenix and PostgreSQL.
+____
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
