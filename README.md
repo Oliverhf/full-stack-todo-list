@@ -1,5 +1,9 @@
 # TodoList
 
+## Main goal of this project
+
+Build a full stack application using React, GraphQL and Phoenix.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
