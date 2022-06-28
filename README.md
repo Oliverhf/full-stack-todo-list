@@ -11,7 +11,7 @@ This project is using:
 
 Front-end
 
-### Where our front-end lives
+### Where our Front-End lives
 
 <br>
 
@@ -31,7 +31,7 @@ Package Installs
 
 > yarn add -D @apollo/client graphql
 
-Back-end
+### Back-End
 
 (Hex packages)
 
