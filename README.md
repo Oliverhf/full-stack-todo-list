@@ -36,6 +36,7 @@ Back-end
 (Hex packages)
 
 >    {:absinthe, "~> 1.7"},
+
 >    {:absinthe_plug, "~> 1.5.8"}
 
 <br>
