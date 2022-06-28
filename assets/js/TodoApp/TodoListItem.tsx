@@ -2,6 +2,7 @@ import React, { ChangeEvent, useCallback, useState } from 'react'
 import TodoItem from "./types/TodoItem"
 import { useMutation } from '@apollo/client'
 import {gql} from '@apollo/client'
+import { GET_TODO_ITEMS } from './TodoList'
 
 
 const TOGGLE_TODO_ITEM = gql`
@@ -22,11 +23,34 @@ const UPDATE_TODO_ITEM = gql`
 } 
 `
 
+const DELETE_TODO_ITEM = gql`
+  mutation deleteTodoItem($id: ID!) {
+    deleteTodoItem(id: $id) 
+  }
+`
+
+interface TodoItems {
+  todoItems: any; // TODO: Put a correct type here
+}
+
+
 
 const TodoListItem = ({id, content, isCompleted} : TodoItem) => {
   const [text, setText] = useState(content)
   const [toggleItem] = useMutation(TOGGLE_TODO_ITEM)
   const [updateItem] = useMutation(UPDATE_TODO_ITEM)
+  const [deleteItem] = useMutation(DELETE_TODO_ITEM, {
+    update(cache) {
+      const {todoItems} = cache.readQuery<TodoItems>({query: GET_TODO_ITEMS})!
+      console.log(todoItems)
+      cache.writeQuery({
+        query: GET_TODO_ITEMS,
+        data: {
+          todoItems: todoItems.filter((item: TodoItem) => item.id !== id)
+        }
+      })
+    }
+  })
 
   const handleToggle = useCallback(() => {
     toggleItem({variables: {id}})
@@ -38,6 +62,12 @@ const TodoListItem = ({id, content, isCompleted} : TodoItem) => {
   }, [setText])
 
   const handleBlur = useCallback(() => {
+    if(text === "") {
+      deleteItem({variables: {id}})
+      return
+    }
+
+    if(text === content) return
     updateItem({variables: {id, content: text}})
   }, [text, updateItem])
 
