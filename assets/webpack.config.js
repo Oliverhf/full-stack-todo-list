@@ -33,7 +33,6 @@ module.exports = (env, options) => ({
       },
       {
         test: /\.css$/,
-        include:path.resolve(__dirname, 'stylesheets'),  
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
