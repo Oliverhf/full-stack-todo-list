@@ -1,10 +1,3 @@
-
-:root {
-  --primary: rgb(0, 122, 255);
-  --font-emph: "Nunito", sans-serif; 
-}
-
-
 body {
   margin: 0;
   padding: 0;
@@ -33,7 +26,7 @@ h1 {
 }
 
 .todo_list__header {
-  font-family: var(--font-emph);
+  font-family:  "Nunito", sans-serif;
   font-weight: 800;
   font-size: 31px;
   margin: 0;
@@ -83,7 +76,7 @@ h1 {
 }
 
 .todo_item__toggle--completed {
-  background: var(--primary);
+  background: rgb(0, 122, 255);
 }
 
 .todo_item__toggle--completed::after {
@@ -124,7 +117,7 @@ h1 {
 
 .wrap_calendar_icon svg {
   fill: #fff;
-  stroke: var(--primary);
+  stroke:rgb(0, 122, 255);
   height: 22px;
 }
 
@@ -134,11 +127,11 @@ h1 {
 .new_todo_button {
   display: inline-flex;
   align-items: center;
-  color: var(--primary);
+  color: rgb(0, 122, 255);
   border: none;
   outline: none;
   background: none;
-  font: 600 17px var(--font-emph);
+  font: 600 17px  "Nunito", sans-serif; 
   cursor: pointer;
 }
 
