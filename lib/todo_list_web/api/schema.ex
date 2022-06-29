@@ -10,20 +10,15 @@ defmodule TodoListWeb.Api.Schema do
                 {:ok, !is_nil(completed_at)}
             end)
         end
+        field :completed_at, :string
     end
 
     mutation do
-        field :create_todo_item, non_null(:boolean) do
+        field :create_todo_item, :todo_item do
             arg :content, non_null(:string)
 
             resolve(fn %{content: content}, _ ->
-                case Todos.create_item(%{content: content}) do
-                    {:ok, %Todos.Item{}} -> 
-                        {:ok, true}
-
-                    _ ->
-                        {:ok, false}
-                end
+                Todos.create_item(%{content: content})
             end)
         end
 
